@@ -4,6 +4,7 @@ const myPeer = new Peer(undefined, {
   host: "/",
   port: "3001",
 });
+
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 const peers = {};
@@ -33,6 +34,7 @@ socket.on("user-disconnected", (userId) => {
 });
 
 myPeer.on("open", (id) => {
+  console.log("my peerId is " + id);
   socket.emit("join-room", ROOM_ID, id);
 });
 
